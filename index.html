@@ -1,61 +1,128 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <link rel="stylesheet" href="./styles.css">
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Um Convite Especial</title>
+    
+    <style>
+        /* Configurações gerais da página */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Usa a altura total da tela */
+            background-color: #1A1A2E; /* Fundo azul escuro */
+            margin: 0;
+            font-family: sans-serif;
+            color: white; /* Cor do texto principal */
+        }
+
+        /* O container principal que centraliza tudo */
+        .container {
+            text-align: center;
+        }
+
+        /* Títulos */
+        .header_text {
+            font-size: 2rem; /* Tamanho da fonte do título principal */
+            margin-bottom: 5px; /* Espaço abaixo do título */
+        }
         
-    </head> 
-    <body>
-        <div class="container">
-            <div >
-                <h1 class = "header_text"> Larissa,voce aceita  sair comigo?</h1>
-                <h1 class = "header_text">Pelos velhos tempos</h1>
-            </div>
-            <div class="gif_container">
-                <img src="imagem-1.jpg" alt="Cute animated illustration"width="200">
-            </div>
-            <div class = "buttons">
-                <button class="btn" id = "yesButton" onclick="nextPage()">Simmm</button>
-                <button class="btn" id="noButton" onmouseover="moveButton()" onclick="moveButton()">Nao</button>
-                <script>
-                    function nextPage() {
-                        window.location.href = "yes.html";
-                    }
-                    
-                 <script>
-    const noBtn = document.getElementById('noBtn');
-    const yesBtn = document.querySelector('.btn:not(#noBtn)');
+        .sub_header_text {
+            font-size: 1.2rem; /* Tamanho da fonte do subtítulo */
+            margin-bottom: 20px; /* Espaço abaixo do subtítulo */
+        }
 
-    // Função para mover o botão
-    function moveButton() {
-        // Calcula o espaço disponível na tela para o botão não sumir
-        let x = window.innerWidth - noBtn.clientWidth;
-        let y = window.innerHeight - noBtn.clientHeight;
+        /* Imagem */
+        .imagem {
+            width: 200px; /* Largura da imagem */
+            border-radius: 15px; /* Bordas arredondadas */
+        }
 
-        noBtn.style.position = 'absolute';
-        noBtn.style.left = Math.floor(Math.random() * x) + 'px';
-        noBtn.style.top = Math.floor(Math.random() * y) + 'px';
-    }
+        /* Container dos botões */
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Espaço entre os botões */
+            margin-top: 25px; /* Espaço ACIMA dos botões para não colar na imagem */
+        }
 
-    // --- A MÁGICA ESTÁ AQUI ---
+        /* Estilo dos botões */
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
 
-    // 1. Para computador (continua funcionando com o mouse)
-    noBtn.addEventListener('mouseover', moveButton);
+        .btn:hover {
+            transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+        }
 
-    // 2. Para celular (a correção)
-    noBtn.addEventListener('touchstart', (event) => {
-        // Esta linha impede que o navegador tente "clicar" logo depois do toque
-        event.preventDefault(); 
-        moveButton();
-    });
+        #yesButton {
+            background-color: #4CAF50; /* Verde */
+            color: white;
+        }
 
-    function nextPage() {
-        window.location.href = "yes.html";
-    }
-</script>
-                    }
-                </script> 
-            </div>
+        #noButton {
+            background-color: #F44336; /* Vermelho */
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="header_text">Larissa, voce aceita sair comigo?</h1>
+        <h2 class="sub_header_text">Pelos velhos tempos</h2>
+
+        <img class="imagem" src="img-1.jpg" alt="Ilustração fofa">
+
+        <div class="buttons">
+            <button class="btn" id="yesButton">Simmm</button>
+            <button class="btn" id="noButton">Nao</button>
         </div>
-       
-    </body> 
+    </div>
+
+    <script>
+        // Seleciona os botões pelo ID que demos a eles
+        const yesBtn = document.getElementById('yesButton');
+        const noBtn = document.getElementById('noButton');
+
+        // Função para ir para a próxima página quando clicar "Sim"
+        function nextPage() {
+            window.location.href = "yes.html";
+        }
+
+        // Função para mover o botão "Não"
+        function moveButton() {
+            // Calcula o espaço disponível na tela para o botão não sumir
+            let x = window.innerWidth - noBtn.clientWidth - 50; // Margem de segurança
+            let y = window.innerHeight - noBtn.clientHeight - 50; // Margem de segurança
+
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = Math.floor(Math.random() * x) + 'px';
+            noBtn.style.top = Math.floor(Math.random() * y) + 'px';
+        }
+
+        // --- LÓGICA PRINCIPAL ---
+
+        // Adiciona o "ouvinte" para o clique no botão "Sim"
+        yesBtn.addEventListener('click', nextPage);
+
+        // Adiciona o "ouvinte" para o mouse passando por cima do botão "Não" (para computador)
+        noBtn.addEventListener('mouseover', moveButton);
+
+        // Adiciona o "ouvinte" para o toque na tela no botão "Não" (para celular)
+        noBtn.addEventListener('touchstart', (event) => {
+            event.preventDefault(); // Impede o "clique fantasma" que acontecia no celular
+            moveButton();
+        });
+    </script>
+
+</body>
 </html>
