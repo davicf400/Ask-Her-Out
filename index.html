@@ -21,11 +21,37 @@
                         window.location.href = "yes.html";
                     }
                     
-                    function moveButton() {
-                        var x = Math.random() * (window.innerWidth - document.getElementById('noButton').offsetWidth) - 85;
-                        var y = Math.random() * (window.innerHeight - document.getElementById('noButton').offsetHeight) - 48;
-                        document.getElementById('noButton').style.left = `${x}px`;
-                        document.getElementById('noButton').style.top = `${y}px`;
+                 <script>
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.querySelector('.btn:not(#noBtn)');
+
+    // Função para mover o botão
+    function moveButton() {
+        // Calcula o espaço disponível na tela para o botão não sumir
+        let x = window.innerWidth - noBtn.clientWidth;
+        let y = window.innerHeight - noBtn.clientHeight;
+
+        noBtn.style.position = 'absolute';
+        noBtn.style.left = Math.floor(Math.random() * x) + 'px';
+        noBtn.style.top = Math.floor(Math.random() * y) + 'px';
+    }
+
+    // --- A MÁGICA ESTÁ AQUI ---
+
+    // 1. Para computador (continua funcionando com o mouse)
+    noBtn.addEventListener('mouseover', moveButton);
+
+    // 2. Para celular (a correção)
+    noBtn.addEventListener('touchstart', (event) => {
+        // Esta linha impede que o navegador tente "clicar" logo depois do toque
+        event.preventDefault(); 
+        moveButton();
+    });
+
+    function nextPage() {
+        window.location.href = "yes.html";
+    }
+</script>
                     }
                 </script> 
             </div>
