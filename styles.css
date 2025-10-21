@@ -3,7 +3,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 90vh;
-    background-color: #1A1A2E;
+    background: linear-gradient(to right, #6A82FB, #FC5C7D);
 }
 
 #noButton {
@@ -32,7 +32,7 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: 20px;
 }
 
