@@ -12,7 +12,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh; /* Usa a altura total da tela */
-          background: linear-gradient(to right, #6A82FB, #FC5C7D); /* Fundo azul escuro */
+            background-color: #1A1A2E; /* Fundo azul escuro */
             margin: 0;
             font-family: sans-serif;
             color: white; /* Cor do texto principal */
@@ -27,6 +27,15 @@
         .header_text {
             font-size: 2rem; /* Tamanho da fonte do título principal */
             margin-bottom: 5px; /* Espaço abaixo do título */
+        }
+        
+        /* ===== ESTILO DA DATA (NOVO) ===== */
+        .date_text {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #cccccc; /* Cinza claro, para ser mais sutil */
+            margin-top: -10px; /* Puxa um pouco para cima, perto da pergunta */
+            margin-bottom: 20px; /* Empurra o subtítulo "Pelos velhos tempos" para baixo */
         }
         
         .sub_header_text {
@@ -78,9 +87,12 @@
 
     <div class="container">
         <h1 class="header_text">Larissa, voce aceita sair comigo?</h1>
+
+        <p class="date_text">Sábado, 25/10?</p>
+
         <h2 class="sub_header_text">Pelos velhos tempos</h2>
 
-        <img class="imagem" src="imagem-1.jpg" alt="Ilustração fofa">
+        <img class="imagem" src="img-1.jpg" alt="Ilustração fofa">
 
         <div class="buttons">
             <button class="btn" id="yesButton">Simmm</button>
