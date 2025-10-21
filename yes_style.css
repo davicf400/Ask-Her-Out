@@ -3,8 +3,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-  background-color: #1A1A2E;
-}
+background: linear-gradient(to right, #6A82FB, #FC5C7D);
 
 .header_text {
     font-family: 'Nunito';
